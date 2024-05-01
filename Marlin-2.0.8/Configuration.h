@@ -127,9 +127,9 @@
 //#define BLUETOOTH
 
 // Choose the name from boards.h that matches your setup
-//Starsetter Need to look this up
+//Starsetter Updated to proper board.
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_RAMPS_14_EFB
+  #define MOTHERBOARD BOARD_BTT_MANTA_M8P_V2_0
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
