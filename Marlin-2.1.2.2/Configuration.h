@@ -89,8 +89,9 @@
 // @section machine
 
 // Choose the name from boards.h that matches your setup
+//Starsetter Updated Board.
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_RAMPS_14_EFB
+  #define MOTHERBOARD BOARD_BTT_MANTA_M8P_V2_0
 #endif
 
 /**
