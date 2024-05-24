@@ -448,7 +448,7 @@ Version     033
  *
  * Example Configs:     https://github.com/MarlinFirmware/Configurations/branches/all
  *
- * Pr??a Calculator:    https://blog.prusaprinters.org/calculator_3416/
+ * Průša Calculator:    https://blog.prusaprinters.org/calculator_3416/
  *
  * Calibration Guides:  https://reprap.org/wiki/Calibration
  *                      https://reprap.org/wiki/Triffid_Hunter%27s_Calibration_Guide
@@ -485,7 +485,7 @@ Version     033
  * Currently Ethernet (-2) is only supported on Teensy 4.1 boards.
  * :[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-//#define SERIAL_PORT_2 3
+//#define SERIAL_PORT_2 -1
 
 /**
  * This setting determines the communication speed of the printer.
@@ -496,11 +496,7 @@ Version     033
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-//#if ENABLED(TL_GRBL)
-//  #define BAUDRATE 115200
-//#else
   #define BAUDRATE 115200
-//#endif
 
 // Enable the Bluetooth serial interface on AT90USB devices
 //#define BLUETOOTH
@@ -539,11 +535,11 @@ Version     033
  * Multi-Material Unit
  * Set to one of these predefined models:
  *
- *   PRUSA_MMU1           : Pr??a MMU1 (The "multiplexer" version)
- *   PRUSA_MMU2           : Pr??a MMU2
- *   PRUSA_MMU2S          : Pr??a MMU2S (Requires MK3S extruder with motion sensor, EXTRUDERS = 5)
- *   EXTENDABLE_EMU_MMU2  : MMU with configurable number of filaments (ERCF, SMuFF or similar with Pr??a MMU2 compatible firmware)
- *   EXTENDABLE_EMU_MMU2S : MMUS with configurable number of filaments (ERCF, SMuFF or similar with Pr??a MMU2 compatible firmware)
+ *   PRUSA_MMU1           : Průša MMU1 (The "multiplexer" version)
+ *   PRUSA_MMU2           : Průša MMU2
+ *   PRUSA_MMU2S          : Průša MMU2S (Requires MK3S extruder with motion sensor, EXTRUDERS = 5)
+ *   EXTENDABLE_EMU_MMU2  : MMU with configurable number of filaments (ERCF, SMuFF or similar with Průša MMU2 compatible firmware)
+ *   EXTENDABLE_EMU_MMU2S : MMUS with configurable number of filaments (ERCF, SMuFF or similar with Průša MMU2 compatible firmware)
  *
  * Requires NOZZLE_PARK_FEATURE to park print head in case MMU unit fails.
  * See additional options in Configuration_adv.h.
@@ -709,9 +705,9 @@ Version     033
     #define AUTO_POWER_CONTROLLERFAN
     #define AUTO_POWER_CHAMBER_FAN
     #define AUTO_POWER_COOLER_FAN
-    //#define AUTO_POWER_E_TEMP        50 // (��C) Turn on PSU if any extruder is over this temperature
-    //#define AUTO_POWER_CHAMBER_TEMP  30 // (��C) Turn on PSU if the chamber is over this temperature
-    //#define AUTO_POWER_COOLER_TEMP   26 // (��C) Turn on PSU if the cooler is over this temperature
+    //#define AUTO_POWER_E_TEMP        50 // (°C) Turn on PSU if any extruder is over this temperature
+    //#define AUTO_POWER_CHAMBER_TEMP  30 // (°C) Turn on PSU if the chamber is over this temperature
+    //#define AUTO_POWER_COOLER_TEMP   26 // (°C) Turn on PSU if the cooler is over this temperature
     #define POWER_TIMEOUT              30 // (s) Turn off power if the machine is idle for this duration
     //#define POWER_OFF_DELAY          60 // (s) Delay of poweroff after M81 command. Useful to let fans run for extra time.
   #endif
@@ -742,7 +738,7 @@ Version     033
  *     4 : 10k thermistor !! do not use it for a hotend. It gives bad resolution at high temp. !!
  *     5 : 100K thermistor - ATC Semitec 104GT-2/104NT-4-R025H42G (Used in ParCan, J-Head, and E3D) (4.7k pullup)
  *   501 : 100K Zonestar (Tronxy X3A) Thermistor
- *   502 : 100K Zonestar Thermistor used by hot bed in Zonestar Pr??a P802M
+ *   502 : 100K Zonestar Thermistor used by hot bed in Zonestar Průša P802M
  *   512 : 100k RPW-Ultra hotend thermistor (4.7k pullup)
  *     6 : 100k EPCOS - Not as accurate as table 1 (created using a fluke thermocouple) (4.7k pullup)
  *     7 : 100k Honeywell thermistor 135-104LAG-J01 (4.7k pullup)
@@ -752,13 +748,13 @@ Version     033
  *    10 : 100k RS thermistor 198-961 (4.7k pullup)
  *    11 : 100k beta 3950 1% thermistor (Used in Keenovo AC silicone mats and most Wanhao i3 machines) (4.7k pullup)
  *    12 : 100k 0603 SMD Vishay NTCS0603E3104FXT (4.7k pullup) (calibrated for Makibox hot bed)
- *    13 : 100k Hisens 3950  1% up to 300��C for hotend "Simple ONE " & "Hotend "All In ONE"
+ *    13 : 100k Hisens 3950  1% up to 300°C for hotend "Simple ONE " & "Hotend "All In ONE"
  *    15 : 100k thermistor calibration for JGAurora A5 hotend
  *    18 : ATC Semitec 204GT-2 (4.7k pullup) Dagoma.Fr - MKS_Base_DKU001327
  *    20 : Pt100 with circuit in the Ultimainboard V2.x with mainboard ADC reference voltage = INA826 amplifier-board supply voltage.
  *         NOTES: (1) Must use an ADC input with no pullup. (2) Some INA826 amplifiers are unreliable at 3.3V so consider using sensor 147, 110, or 21.
  *    21 : Pt100 with circuit in the Ultimainboard V2.x with 3.3v ADC reference voltage (STM32, LPC176x....) and 5V INA826 amplifier board supply.
- *         NOTE: ADC pins are not 5V tolerant. Not recommended because it's possible to damage the CPU by going over 500��C.
+ *         NOTE: ADC pins are not 5V tolerant. Not recommended because it's possible to damage the CPU by going over 500°C.
  *    22 : 100k (hotend) with 4.7k pullup to 3.3V and 220R to analog input (as in GTM32 Pro vB)
  *    23 : 100k (bed) with 4.7k pullup to 3.3v and 220R to analog input (as in GTM32 Pro vB)
  *    30 : Kis3d Silicone heating mat 200W/300W with 6mm precision cast plate (EN AW 5083) NTC100K / B3950 (4.7k pullup)
@@ -785,8 +781,8 @@ Version     033
  *  1000 : Custom - Specify parameters in Configuration_adv.h
  *
  *         Use these for Testing or Development purposes. NEVER for production machine.
- *   998 : Dummy Table that ALWAYS reads 25��C or the temperature defined below.
- *   999 : Dummy Table that ALWAYS reads 100��C or the temperature defined below.
+ *   998 : Dummy Table that ALWAYS reads 25°C or the temperature defined below.
+ *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  */
 #ifdef ELECTROMAGNETIC_VALUE
   #define TEMP_SENSOR_0 0
@@ -815,8 +811,8 @@ Version     033
 #define DUMMY_THERMISTOR_999_VALUE 100
 
 // Resistor values when using MAX31865 sensors (-5) on TEMP_SENSOR_0 / 1
-//#define MAX31865_SENSOR_OHMS_0      100   // (��) Typically 100 or 1000 (PT100 or PT1000)
-//#define MAX31865_CALIBRATION_OHMS_0 430   // (��) Typically 430 for AdaFruit PT100; 4300 for AdaFruit PT1000
+//#define MAX31865_SENSOR_OHMS_0      100   // (Ω) Typically 100 or 1000 (PT100 or PT1000)
+//#define MAX31865_CALIBRATION_OHMS_0 430   // (Ω) Typically 430 for AdaFruit PT100; 4300 for AdaFruit PT1000
 //#define MAX31865_SENSOR_OHMS_1      100
 //#define MAX31865_CALIBRATION_OHMS_1 430
 
@@ -828,16 +824,16 @@ Version     033
 #endif
 
 #define TEMP_RESIDENCY_TIME           1//5  // (seconds) Time to wait for hotend to "settle" in M109
-#define TEMP_WINDOW                   1  // (��C) Temperature proximity for the "temperature reached" timer
-#define TEMP_HYSTERESIS               5  // (��C) Temperature proximity considered "close enough" to the target
+#define TEMP_WINDOW                   1  // (°C) Temperature proximity for the "temperature reached" timer
+#define TEMP_HYSTERESIS               5  // (°C) Temperature proximity considered "close enough" to the target
 
 #define TEMP_BED_RESIDENCY_TIME       1//5  // (seconds) Time to wait for bed to "settle" in M190
-#define TEMP_BED_WINDOW               1  // (��C) Temperature proximity for the "temperature reached" timer
-#define TEMP_BED_HYSTERESIS           5  // (��C) Temperature proximity considered "close enough" to the target
+#define TEMP_BED_WINDOW               1  // (°C) Temperature proximity for the "temperature reached" timer
+#define TEMP_BED_HYSTERESIS           5  // (°C) Temperature proximity considered "close enough" to the target
 
 #define TEMP_CHAMBER_RESIDENCY_TIME   10  // (seconds) Time to wait for chamber to "settle" in M191
-#define TEMP_CHAMBER_WINDOW           1  // (��C) Temperature proximity for the "temperature reached" timer
-#define TEMP_CHAMBER_HYSTERESIS       3  // (��C) Temperature proximity considered "close enough" to the target
+#define TEMP_CHAMBER_WINDOW           1  // (°C) Temperature proximity for the "temperature reached" timer
+#define TEMP_CHAMBER_HYSTERESIS       3  // (°C) Temperature proximity considered "close enough" to the target
 
 // Below this temperature the heater will be switched off
 // because it probably indicates a broken thermistor wire.
@@ -873,9 +869,9 @@ Version     033
  * (especially before PID tuning). Setting the target temperature too close to MAXTEMP guarantees
  * a MAXTEMP shutdown! Use these values to forbid temperatures being set too close to MAXTEMP.
  */
-#define HOTEND_OVERSHOOT 10   // (��C) Forbid temperatures over MAXTEMP - OVERSHOOT
-#define BED_OVERSHOOT    10   // (��C) Forbid temperatures over MAXTEMP - OVERSHOOT
-#define COOLER_OVERSHOOT  2   // (��C) Forbid temperatures closer than OVERSHOOT
+#define HOTEND_OVERSHOOT 10   // (°C) Forbid temperatures over MAXTEMP - OVERSHOOT
+#define BED_OVERSHOOT    10   // (°C) Forbid temperatures over MAXTEMP - OVERSHOOT
+#define COOLER_OVERSHOOT  2   // (°C) Forbid temperatures closer than OVERSHOOT
 
 //===========================================================================
 //============================= PID Settings ================================
@@ -939,7 +935,7 @@ Version     033
  * When set to any value below 255, enables a form of PWM to the bed that acts like a divider
  * so don't use it unless you are OK with PWM on your bed. (See the comment on enabling PIDTEMPBED)
  */
-#define MAX_BED_POWER 255   //255 // limits duty cycle to bed; 255=full current
+#define MAX_BED_POWER 255 // limits duty cycle to bed; 255=full current
 
 #if ENABLED(PIDTEMPBED)
   //#define MIN_BED_POWER 0
@@ -1073,7 +1069,6 @@ Version     033
 // Specify here all the endstop connectors that are connected to any endstop or probe.
 // Almost all printers will be using one per axis. Probes will use one or more of the
 // extra connectors. Leave undefined any used for non-endstop and non-probe purposes.
-
 #define USE_XMIN_PLUG
 #define USE_YMIN_PLUG
 #define USE_ZMIN_PLUG
@@ -1160,7 +1155,7 @@ Version     033
  *
  * These settings allow Marlin to tune stepper driver timing and enable advanced options for
  * stepper drivers that support them. You may also override timing options in Configuration_adv.h.
- 
+ *
  * A4988 is assumed for unspecified drivers.
  *
  * Use TMC2208/TMC2208_STANDALONE for TMC2225 drivers and TMC2209/TMC2209_STANDALONE for TMC2226 drivers.
@@ -1372,13 +1367,13 @@ Version     033
 #if DISABLED(CLASSIC_JERK)
   #define JUNCTION_DEVIATION_MM 0.013 // (mm) Distance from real junction edge
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
-                                      // for small segments (< 1mm) with large junction angles (> 135��).
+                                      // for small segments (< 1mm) with large junction angles (> 135°).
 #endif
 
 /**
  * S-Curve Acceleration
  *
- * This option eliminates vibration during printing by fitting a B��zier
+ * This option eliminates vibration during printing by fitting a Bézier
  * curve to move acceleration, producing much smoother direction changes.
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
@@ -1425,7 +1420,7 @@ Version     033
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-//#define Z_MIN_PROBE_PIN PC15
+//#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
 
 /**
  * Probe Type
@@ -1687,7 +1682,7 @@ Version     033
 // Require minimum nozzle and/or bed temperature for probing
 //#define PREHEAT_BEFORE_PROBING
 #if ENABLED(PREHEAT_BEFORE_PROBING)
-  #define PROBING_NOZZLE_TEMP 120   // (��C) Only applies to E0 at this time
+  #define PROBING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
   #define PROBING_BED_TEMP     50
 #endif
 
@@ -1867,7 +1862,7 @@ Version     033
   // Commands to execute on filament runout.
   // With multiple runout sensors use the %c placeholder for the current tool in commands (e.g., "M600 T%c")
   // NOTE: After 'M412 H1' the host handles filament runout and this script does not apply.
-  #define FILAMENT_RUNOUT_SCRIPT "M25"
+  #define FILAMENT_RUNOUT_SCRIPT "M600"
 
   // After a runout is detected, continue printing this length of filament
   // before executing the runout script. Useful for a sensor at the end of
@@ -1930,7 +1925,7 @@ Version     033
  * leveling immediately after G28.
  */
 #ifdef AUTO_BED_LEVELING_UBL
-#define RESTORE_LEVELING_AFTER_G28
+ #define RESTORE_LEVELING_AFTER_G28
 #endif
 //#define ENABLE_LEVELING_AFTER_G28
 
@@ -1939,7 +1934,7 @@ Version     033
  */
 //#define PREHEAT_BEFORE_LEVELING
 #if ENABLED(PREHEAT_BEFORE_LEVELING)
-  #define LEVELING_NOZZLE_TEMP 120   // (��C) Only applies to E0 at this time
+  #define LEVELING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
   #define LEVELING_BED_TEMP     50
 #endif
 
@@ -1948,9 +1943,7 @@ Version     033
  * Turn on with the command 'M111 S32'.
  * NOTE: Requires a lot of PROGMEM!
  */
-#if ENABLED(TL_DEBUG)
 //#define DEBUG_LEVELING_FEATURE
-#endif
 
 #if ANY(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL, PROBE_MANUALLY)
   // Set a height for the start of manual adjustment
@@ -1979,8 +1972,8 @@ Version     033
   #if ENABLED(G26_MESH_VALIDATION)
     #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for G26.
-    #define MESH_TEST_HOTEND_TEMP  205    // (��C) Default nozzle temperature for G26.
-    #define MESH_TEST_BED_TEMP      60    // (��C) Default bed temperature for G26.
+    #define MESH_TEST_HOTEND_TEMP  205    // (°C) Default nozzle temperature for G26.
+    #define MESH_TEST_BED_TEMP      60    // (°C) Default bed temperature for G26.
     #define G26_XY_FEEDRATE         20    // (mm/s) Feedrate for G26 XY moves.
     #define G26_XY_FEEDRATE_TRAVEL 100    // (mm/s) Feedrate for G26 XY travel moves.
     #define G26_RETRACT_MULTIPLIER   1.0  // G26 Q (retraction) used by default between mesh test elements.
@@ -2077,7 +2070,7 @@ Version     033
  * Add a bed leveling sub-menu for ABL or MBL.
  * Include a guided procedure if manual probing is enabled.
  */
-// #define LCD_BED_LEVELING
+//#define LCD_BED_LEVELING
 
 #if ENABLED(LCD_BED_LEVELING)
   #define MESH_EDIT_Z_STEP  0.025 // (mm) Step size while manually probing Z axis.
@@ -2133,7 +2126,7 @@ Version     033
 
 // Manually set the home position. Leave these undefined for automatic settings.
 // For DELTA this is the top-center of the Cartesian print volume.
-//#define MANUAL_X_HOME_POS -50
+//#define MANUAL_X_HOME_POS 0
 //#define MANUAL_Y_HOME_POS 0
 #define MANUAL_Z_HOME_POS 0
 
@@ -2457,30 +2450,11 @@ Version     033
  *   en, an, bg, ca, cz, da, de, el, el_gr, es, eu, fi, fr, gl, hr, hu, it,
  *   jp_kana, ko_KR, nl, pl, pt, pt_br, ro, ru, sk, sv, tr, uk, vi, zh_CN, zh_TW
  *
- * :{ 'en':'English', 'an':'Aragonese', 'bg':'Bulgarian', 'ca':'Catalan', 'cz':'Czech',
- *  'da':'Danish', 'de':'German', 'el':'Greek', 'el_gr':'Greek (Greece)', 'es':'Spanish', 
- * 'eu':'Basque-Euskera', 'fi':'Finnish', 'fr':'French', 'gl':'Galician', 'hr':'Croatian', 
- * 'hu':'Hungarian', 'it':'Italian', 'jp_kana':'Japanese', 'ko_KR':'Korean (South Korea)', 
- * 'nl':'Dutch', 'pl':'Polish', 'pt':'Portuguese', 'pt_br':'Portuguese (Brazilian)', 
- * 'ro':'Romanian', 'ru':'Russian', 'sk':'Slovak', 'sv':'Swedish', 'tr':'Turkish', 'uk':'Ukrainian',
- *  'vi':'Vietnamese', 'zh_CN':'Chinese (Simplified)', 'zh_TW':'Chinese (Traditional)' }
+ * :{ 'en':'English', 'an':'Aragonese', 'bg':'Bulgarian', 'ca':'Catalan', 'cz':'Czech', 'da':'Danish', 'de':'German', 'el':'Greek', 'el_gr':'Greek (Greece)', 'es':'Spanish', 'eu':'Basque-Euskera', 'fi':'Finnish', 'fr':'French', 'gl':'Galician', 'hr':'Croatian', 'hu':'Hungarian', 'it':'Italian', 'jp_kana':'Japanese', 'ko_KR':'Korean (South Korea)', 'nl':'Dutch', 'pl':'Polish', 'pt':'Portuguese', 'pt_br':'Portuguese (Brazilian)', 'ro':'Romanian', 'ru':'Russian', 'sk':'Slovak', 'sv':'Swedish', 'tr':'Turkish', 'uk':'Ukrainian', 'vi':'Vietnamese', 'zh_CN':'Chinese (Simplified)', 'zh_TW':'Chinese (Traditional)' }
  */
- //#define USE_CHINESE_LANGUAGE
- 
- #ifdef USE_CHINESE_LANGUAGE
-  #define LCD_LANGUAGE en     //by zyf do not need chinese
-  //#define LCD_LANGUAGE_2 en
- #else
+
 #define LCD_LANGUAGE en
-//#define LCD_LANGUAGE_2 es
-//#define LCD_LANGUAGE_3 de
-//#define LCD_LANGUAGE_4 pl
-//#define LCD_LANGUAGE_5 it
-// #define LCD_LANGUAGE_6 fr
-// #define LCD_LANGUAGE_7 pt
-// #define LCD_LANGUAGE_8 ru
-// #define LCD_LANGUAGE_9 ko_KR
-#endif
+
 /**
  * LCD Character Set
  *
@@ -2507,9 +2481,9 @@ Version     033
 //#define DISPLAY_CHARSET_HD44780 JAPANESE //by zyf
 
 /**
- * Info Screen Style (0:Classic, 1:Pr??a)
+ * Info Screen Style (0:Classic, 1:Průša)
  *
- * :[0:'Classic', 1:'Pr??a']
+ * :[0:'Classic', 1:'Průša']
  */
 #define LCD_INFO_SCREEN_STYLE 0
 
@@ -2870,11 +2844,6 @@ Version     033
 // (For CR-10 owners who want to replace the Melzi Creality board but retain the display)
 //
 // #define CR10_STOCKDISPLAY
-//
-// Ender-3 v2 OEM display. A DWIN display with Rotary Encoder.
-//
-
-
 
 //
 // Ender-2 OEM display, a variant of the MKS_MINI_12864
