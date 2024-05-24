@@ -94,7 +94,7 @@ Version     033
 //TL Medels and version
 //#define TL_H2
 //#define TL_D3HS   //High Speed
-//#define TL_D3
+#define TL_D3
 //#define TL_S2   //single head
 //#define TL_S3   //single head
 //#define TL_M3
@@ -109,7 +109,7 @@ Version     033
 //#define TL_LW3   //
 //#define TL_X3    //
 //#define TL_X2    //Neza
-#define TL_V1
+//#define TL_V1
 
 //#define TL_DEBUG    //debug
 //#define DUAL_HEAD_BLTOUCH
@@ -162,9 +162,9 @@ Version     033
   #endif
 #elif ENABLED(TL_L)
   #define EXTRUDERS 0
-#else //D系列独立双喷头
+#else
   #define DUAL_X_CARRIAGE
-  #define EXTRUDERS 2
+  #define EXTRUDERS 2 //Different location
 #endif
 
 //Auto leveling.
@@ -172,7 +172,7 @@ Version     033
   #if ANY(TL_V, TL_M3S)
     //do nothing
   #else
-    #define BLTOUCH
+    #define BLTOUCH //Different location
     #define TLTOUCH
     #define AUTO_BED_LEVELING_UBL
   #endif
@@ -362,13 +362,13 @@ Version     033
 #endif
 
 #if ANY(TL_M3,TL_M3S)
-  #define INVERT_X_DIR false
+  #define INVERT_X_DIR false //Different location
 #else
   #define INVERT_X_DIR true
 #endif
 
 #if ENABLED(TL_L)
-  #define INVERT_Y_DIR true
+  #define INVERT_Y_DIR true //Different location
 #else
   #define INVERT_Y_DIR false
 #endif
@@ -819,9 +819,7 @@ Version     033
 // Use temp sensor 1 as a redundant sensor with sensor 0. If the readings
 // from the two sensors differ too much the print will be aborted.
 //#define TEMP_SENSOR_1_AS_REDUNDANT
-#ifdef TEMP_SENSOR_1_AS_REDUNDANT
 #define MAX_REDUNDANT_TEMP_SENSOR_DIFF 10
-#endif
 
 #define TEMP_RESIDENCY_TIME           1//5  // (seconds) Time to wait for hotend to "settle" in M109
 #define TEMP_WINDOW                   1  // (°C) Temperature proximity for the "temperature reached" timer
