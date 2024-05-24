@@ -2452,7 +2452,6 @@ Version     033
  *
  * :{ 'en':'English', 'an':'Aragonese', 'bg':'Bulgarian', 'ca':'Catalan', 'cz':'Czech', 'da':'Danish', 'de':'German', 'el':'Greek', 'el_gr':'Greek (Greece)', 'es':'Spanish', 'eu':'Basque-Euskera', 'fi':'Finnish', 'fr':'French', 'gl':'Galician', 'hr':'Croatian', 'hu':'Hungarian', 'it':'Italian', 'jp_kana':'Japanese', 'ko_KR':'Korean (South Korea)', 'nl':'Dutch', 'pl':'Polish', 'pt':'Portuguese', 'pt_br':'Portuguese (Brazilian)', 'ro':'Romanian', 'ru':'Russian', 'sk':'Slovak', 'sv':'Swedish', 'tr':'Turkish', 'uk':'Ukrainian', 'vi':'Vietnamese', 'zh_CN':'Chinese (Simplified)', 'zh_TW':'Chinese (Traditional)' }
  */
-
 #define LCD_LANGUAGE en
 
 /**
@@ -2477,8 +2476,7 @@ Version     033
  *
  * :['JAPANESE', 'WESTERN', 'CYRILLIC']
  */
- 
-//#define DISPLAY_CHARSET_HD44780 JAPANESE //by zyf
+ //#define DISPLAY_CHARSET_HD44780 JAPANESE //by zyf
 
 /**
  * Info Screen Style (0:Classic, 1:Průša)
@@ -2896,7 +2894,7 @@ Version     033
 //#define OLED_PANEL_TINYBOY2
 
 //
-// MKS OLED 1.3" 128��64 Full Graphics Controller
+// MKS OLED 1.3" 128×64 Full Graphics Controller
 // https://reprap.org/wiki/MKS_12864OLED
 //
 // Tiny, but very sharp OLED display
@@ -2905,7 +2903,7 @@ Version     033
 //#define MKS_12864OLED_SSD1306  // Uses the SSD1306 controller
 
 //
-// Zonestar OLED 128��64 Full Graphics Controller
+// Zonestar OLED 128×64 Full Graphics Controller
 //
 //#define ZONESTAR_12864LCD           // Graphical (DOGM) with ST7920 controller
 //#define ZONESTAR_12864OLED          // 1.3" OLED with SH1106 controller (default)
@@ -2922,12 +2920,12 @@ Version     033
 //#define OVERLORD_OLED
 
 //
-// FYSETC OLED 2.42" 128��64 Full Graphics Controller with WS2812 RGB
+// FYSETC OLED 2.42" 128×64 Full Graphics Controller with WS2812 RGB
 // Where to find : https://www.aliexpress.com/item/4000345255731.html
 //#define FYSETC_242_OLED_12864   // Uses the SSD1309 controller
 
 //
-// K.3D SSD1309 OLED 2.42" 128��64 Full Graphics Controller
+// K.3D SSD1309 OLED 2.42" 128×64 Full Graphics Controller
 //
 //#define K3D_242_OLED_CONTROLLER   // Software SPI
 
@@ -3100,6 +3098,10 @@ Version     033
 //============================  Other Controllers  ============================
 //=============================================================================
 
+//
+// Ender-3 v2 OEM display. A DWIN display with Rotary Encoder.
+//
+//#define DWIN_CREALITY_LCD
 
 //
 // ADS7843/XPT2046 ADC Touchscreen such as ILI9341 2.8
@@ -3273,5 +3275,3 @@ Version     033
 
 // Edit servo angles with M281 and save to EEPROM with M500
 //#define EDITABLE_SERVO_ANGLES
-//#define USE_SPI
-//#undef USE_SPI
